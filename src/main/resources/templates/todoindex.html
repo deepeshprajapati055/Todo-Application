@@ -35,13 +35,13 @@
 			</thead>
 			<tbody>
 		        <tr th:if="${#lists.isEmpty(todo)}">
-		            <td colspan="5" class="text-center">No tasks available</td>
+		            <td colspan="5" class="text-center fw-bold">No tasks available</td>
 		        </tr>
-		        <tr th:each="t:${todo}">
-		        	<td th:text="${t.id}"></td>
-		        	<td th:text="${t.title}"></td>
-		        	<td th:text="${t.date}"></td>
-		        	<td th:text="${t.time}"></td>
+		        <tr th:each="t:${todo}" class="fw-bold">
+		        	<td th:text="${t.id}" class="fw-bold"></td>
+		        	<td th:text="${t.title}" class="fw-bold"></td>
+		        	<td th:text="${t.date}" class="fw-bold"></td>
+		        	<td th:text="${t.time}" class="fw-bold"></td>
 		        	<td>
 		        		<a href="#"><button class="btn btn-outline-success fw-bold"><i class="fa-solid fa-pen-to-square"></i></button></a>
 						<a th:href="@{'/deletetodo/' + ${t.id}}"><button class="btn btn-outline-danger fw-bold"><i class="fa-solid fa-trash"></i></button></a>
