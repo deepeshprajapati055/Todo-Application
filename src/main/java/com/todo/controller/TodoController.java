@@ -34,20 +34,16 @@ public class TodoController {
 		return "todoindex";
 	}
 	
-	@GetMapping("/gototodo")
-	public String gotoTodo() {
-		return "addtodo";
-	}
-	
 	@PostMapping("/add")
 	public String addTodo(
 			@RequestParam("title") String title,
 			@RequestParam("date") LocalDate date,
 			@RequestParam("time") LocalTime time,
+			@RequestParam("status") String status,
 			RedirectAttributes redirectAttributes
 			) {
 		
-		Todo td = new Todo(title, date, time);
+		Todo td = new Todo(title, date, time, status);
 		todoService.addTodo(td);
 		return "redirect:/";
 	}
@@ -65,4 +61,38 @@ public class TodoController {
 		}
 	}
 	
+	@GetMapping("/updateTodo/{id}")
+	public String updateTodoList(@PathVariable("id") Integer id, Model model) {
+		Optional<Todo> td = Optional.ofNullable(todoService.getTodoById(id));
+		if(td.isEmpty()) {
+			model.addAttribute("error", "Task "+td.get().getId()+" not updated.");
+			return "todoindex";
+		}else {
+			model.addAttribute("todo", td.get());
+		}
+		return "updatetodo";
+	}
+	
+	@PostMapping("/updateTask/{id}")
+	public String updateTodoList(
+			@PathVariable("id") Integer id,
+			@RequestParam("title") String title,
+			@RequestParam("date") LocalDate date,
+			@RequestParam("time") LocalTime time,
+			@RequestParam("status") String status,
+			RedirectAttributes redirectAttributes
+			) {
+		Optional<Todo> td = Optional.ofNullable(todoService.getTodoById(id));
+		if(td.isEmpty()) {
+			return null;
+		}else {
+			td.get().setId(id);
+			td.get().setTitle(title);
+			td.get().setDate(date);
+			td.get().setTime(time);
+			td.get().setStatus(status);
+			todoService.addTodo(td.get());
+		}
+		return "redirect:/";
+	}
 }

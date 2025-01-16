@@ -40,6 +40,16 @@ public class TodoServiceImpl implements TodoService{
 	public void deleteTodoById(Integer id) {
 		todoRepo.deleteById(id);
 	}
-	
+
+	@Override
+	public Todo updateTodo(Todo todo) {
+		Optional<Todo> td = this.todoRepo.findById(todo.getId());
+		if(td.isEmpty()) {
+			return null;
+		}else {
+			return todoRepo.save(todo);
+		}
+	}
 
 }
+

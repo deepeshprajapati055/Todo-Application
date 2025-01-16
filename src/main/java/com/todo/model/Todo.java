@@ -17,16 +17,26 @@ public class Todo {
 	private String title;
 	private LocalDate date;
 	private LocalTime time;
+	private String status;
 	
 	public Todo() {
 		super();
 	}
 
-	public Todo(String title, LocalDate date, LocalTime time) {
+	public Todo(String title, LocalDate date, LocalTime time, String status) {
 		super();
 		this.title = title;
 		this.date = date;
 		this.time = time;
+		this.status=status;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Integer getId() {
