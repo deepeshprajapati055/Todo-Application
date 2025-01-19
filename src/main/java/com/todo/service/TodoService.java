@@ -15,4 +15,7 @@ public interface TodoService {
 	Todo getTodoById(Integer id);
 	
 	Todo updateTodo(Todo todo);
+	
+	public void save(Todo todo);
+
 }

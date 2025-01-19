@@ -28,12 +28,8 @@ public class TodoServiceImpl implements TodoService{
 
 	@Override
 	public Todo getTodoById(Integer id) {
-		Optional<Todo> td = this.todoRepo.findById(id);
-		if(td.isEmpty()) {
-			return null;
-		}else {
-			return td.get();
-		}
+	    return this.todoRepo.findById(id)
+	            .orElseThrow(() -> new RuntimeException("Todo not found for id: " + id));
 	}
 
 	@Override
@@ -51,5 +47,9 @@ public class TodoServiceImpl implements TodoService{
 		}
 	}
 
-}
+	@Override
+	public void save(Todo todo) {
+		todoRepo.save(todo);
+	}
 
+}

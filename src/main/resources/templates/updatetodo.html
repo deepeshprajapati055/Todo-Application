@@ -16,32 +16,32 @@
 <body style="background: #90AEAD;">
     <div class="container mt-5 mb-5 rounded shadow-lg p-3 mb-5 bg-body" style="max-width:600px;">
         <!-- Form for updating tasks -->
-        <form th:action="@{/updateTask/{id}(id=${todo.id})}" method="post">
-            <h1 class="text-black text-center mb-4">Update Task</h1>
-            
-            <div class="form-group">
-                <label for="title">Task Description</label>
-                <input type="text" id="title" name="title" th:value="${todo.title}" class="form-control mb-3 mt-2" required>
-            </div>
-            <div class="form-group">
-                <label for="date">Task Date</label>
-                <input type="date" id="date" name="date" th:value="${todo.date}" class="form-control mb-3 mt-2" required>
-            </div>
-            <div class="form-group">
-                <label for="time">Task Time</label>
-                <input type="time" id="time" name="time" th:value="${todo.time}" class="form-control mb-3 mt-2" required>
-            </div>
-            <div class="form-group">
-                <label for="status">Status</label>
-                <select id="status" name="status" th:value="${todo.status}" class="form-control mb-3 mt-2">
-                    <option value="Incomplete" th:selected="${todo.status == 'Incomplete'}">Incomplete</option>
-                    <option value="Complete" th:selected="${todo.status == 'Complete'}">Complete</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-outline-success col-md-12 mt-2 mb-2">
-                <i class="fa-solid fa-plus pe-2"></i>Update Task
-            </button>
-        </form>
+        <form th:if="${todo != null}" th:action="@{'/updateTask/' + ${todo.id}}" method="post">
+			    <h1 class="text-black text-center mb-4">Update Task</h1>
+			    
+			    <div class="form-group">
+			        <label for="title">Task Description</label>
+			        <input type="text" id="title" name="title" th:value="${todo.title}" class="form-control mb-3 mt-2" required>
+			    </div>
+			    <div class="form-group">
+			        <label for="date">Task Date</label>
+			        <input type="date" id="date" name="date" th:value="${todo.date}" class="form-control mb-3 mt-2" required>
+			    </div>
+			    <div class="form-group">
+			        <label for="time">Task Time</label>
+			        <input type="time" id="time" name="time" th:value="${todo.time}" class="form-control mb-3 mt-2" required>
+			    </div>
+			    <div class="form-group">
+			        <label for="status">Status</label>
+			        <select id="status" name="status" class="form-control mb-3 mt-2">
+			            <option value="Incomplete" th:selected="${todo.status == 'Incomplete'}">Incomplete</option>
+			            <option value="Complete" th:selected="${todo.status == 'Complete'}">Complete</option>
+			        </select>
+			    </div>
+			    <button type="submit" class="btn btn-outline-success col-md-12 mt-2 mb-2">
+			        <i class="fa-solid fa-plus pe-2"></i>Update Task
+			    </button>
+		</form>
     </div>
 </body>
 </html>

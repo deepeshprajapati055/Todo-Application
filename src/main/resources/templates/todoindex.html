@@ -21,7 +21,7 @@
 		<hr>
 		
 		<!-- Add task button -->
-		<button class="btn btn-primary fw-bold col-md-12" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		<button class="btn btn-primary fw-bold col-md-12" title="Create a task" data-bs-toggle="modal" data-bs-target="#exampleModal">
 			<i class="fa-solid fa-plus pe-3"></i>Add-Task
 		</button>
 		<hr>
@@ -47,14 +47,19 @@
 		            <td colspan="6" class="text-center fw-bold fs-5">There is no tasks available right now!</td>
 		        </tr>
 		        <tr th:each="t:${todo}" class="fw-bold">
-		        	<td th:text="${t.id}" class="fw-bold"></td>
-		        	<td th:text="${t.title}" class="fw-bold"></td>
-		        	<td th:text="${t.date}" class="fw-bold"></td>
-		        	<td th:text="${t.time}" class="fw-bold"></td>
-		        	<td th:text="${t.status}" class="fw-bold"></td>
+		        	<td th:text="${t.id}" th:class="${t.status} == 'Complete' ? 'table-success text-decoration-line-through' : ''" class="fw-bold"></td>
+		        	<td th:text="${t.title}" th:class="${t.status} == 'Complete' ? 'table-success text-decoration-line-through' : ''" class="fw-bold"></td>
+		        	<td th:text="${t.date}" th:class="${t.status} == 'Complete' ? 'table-success text-decoration-line-through' : ''" class="fw-bold"></td>
+		        	<td th:text="${t.time}" th:class="${t.status} == 'Complete' ? 'table-success text-decoration-line-through' : ''" class="fw-bold"></td>
+		        	<td th:text="${t.status}" th:class="${t.status} == 'Complete' ? 'table-success text-decoration-line-through' : ''" class="fw-bold"></td>
 		        	<td>
-		        		<a th:href="@{'/updateTodo/' + ${t.id}}"><button class="btn btn-outline-success fw-bold"><i class="fa-solid fa-pen-to-square"></i></button></a>
-						<a th:href="@{'/deletetodo/' + ${t.id}}"><button class="btn btn-outline-danger fw-bold"><i class="fa-solid fa-trash"></i></button></a>
+		        		<a th:href="@{'/updateTodo/' + ${t.id}}" title="Edit" class="btn btn-outline-success fw-bold"><i class="fa-solid fa-pen-to-square"></i></a>
+						<a th:href="@{'/deletetodo/' + ${t.id}}" title="Delete"><button class="btn btn-outline-danger fw-bold"><i class="fa-solid fa-trash"></i></button></a>
+						<a th:href="@{'/markComplete/' + ${t.id}}" title="Mark Complete">
+					        <button class="btn btn-outline-primary fw-bold">
+					            <i class="fa-solid fa-check"></i>
+					        </button>
+    					</a>
 					</td>
 		        </tr>
 			</tbody> 	
@@ -86,7 +91,9 @@
 			    </div>
 			    <div class="form-group">
 			        <label for="status">Status</label>
-			        <input type="text" id="status" name="status" value="Incomplete" class="form-control mb-3 mt-2">
+			        <select id="status" name="status" class="form-control mb-3 mt-2">
+			        	<option>Incomplete</option>
+			        </select>
 			    </div>
 			    <div class="modal-footer">
 				    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
@@ -99,5 +106,6 @@
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </body>
 </html>
