@@ -81,3 +81,13 @@ The application will start running on `http://localhost:8080`
 
 Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
+##
+![Image](https://github.com/user-attachments/assets/e241b6a3-5561-408e-b378-7a415f3ede0a)
+##
+![Image](https://github.com/user-attachments/assets/3237081c-8726-43f0-b014-f2d5213ec9de)
+##
+![Image](https://github.com/user-attachments/assets/3d8eb8c2-3f65-4e1a-a2c5-283748e69bb2)
+##
+![Image](https://github.com/user-attachments/assets/ed3bb9b8-3b32-4a5b-86cd-172e30c42f73)
+##
+![Image](https://github.com/user-attachments/assets/83d3eed0-3553-486c-80c3-74be8d5d8d6a)
