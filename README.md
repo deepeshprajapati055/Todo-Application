@@ -31,7 +31,7 @@ A Spring Boot-based Todo Application that helps you manage your daily tasks effi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/Todo-Application.git
+git clone https://github.com/deepeshprajapati055/Todo-Application.git
 ```
 
 2. Configure MySQL database:
